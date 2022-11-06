@@ -21,7 +21,7 @@ import time
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 #Parámetros iniciales de entrada para la generacion de imágenes
 clase_generar=[0, 1, 2]
-num_elementos_generar=[3, 5, 7]
+num_elementos_generar=[20, 20, 20]
 
 encoder_h5 = 'models/UAO_DL_encoder_model.h5'
 generador_h5 = 'models/UAO_DL_generator_model_1479.h5'
