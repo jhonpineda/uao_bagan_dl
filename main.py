@@ -17,11 +17,12 @@ from tqdm.auto import tqdm
 import datetime
 from PIL import Image as im
 import time
+import random
 
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 #Parámetros iniciales de entrada para la generacion de imágenes
 clase_generar=[0, 1, 2]
-num_elementos_generar=[20, 20, 20]
+num_elementos_generar=[5, 5, 5]
 
 encoder_h5 = 'models/UAO_DL_encoder_model.h5'
 generador_h5 = 'models/UAO_DL_generator_model_1479.h5'
@@ -29,7 +30,7 @@ model_encoder = keras.models.load_model(encoder_h5)
 model_generador = keras.models.load_model(generador_h5)
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-train_path = 'train'
+train_path = 'dataset/test'
 etiquetas = sorted(os.listdir(train_path))
 
 train_images = []
@@ -50,10 +51,13 @@ x_train = (x_train.astype('float32') - 127.5) / 127.5
 
 #indices de las imágenes de adidas
 index_adidas = np.where(y_train == 0)
+random.shuffle(index_adidas[0])
 #ïndices de las imágenes de converse
 index_converse = np.where(y_train == 1)
+random.shuffle(index_converse[0])
 #ïndices de las imágenes de nike
 index_nike = np.where(y_train == 2)
+random.shuffle(index_nike[0])
 
 for z in range(len(clase_generar)):
   #print(thislist[i])
